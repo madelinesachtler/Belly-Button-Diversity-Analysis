@@ -1,6 +1,4 @@
-/// drop down menu 
-
-d3.json("data/samples.json").then((data)=> {
+d3.json("samples.json").then((data)=> {
     var dropdown = d3.select("#selDataset")
     data.names.forEach((ids)=> {
         dropdown.append("option").text(ids).property("value", ids)
@@ -14,14 +12,14 @@ function optionChanged(selectedid){
 function allcharts(id){
 console.log(id)
 // need to filter for top 10 found in the person 
-d3.json("data/samples.json").then((data)=> {
+d3.json("samples.json").then((data)=> {
 
     var filtereddata = data.samples.filter(sample => sample.id == id)
     console.log(filtereddata)
 
     filtereddata = filtereddata[0]
-    
-   
+
+
 
     // trace for the top 10 samples 
     var trace1 = {
@@ -33,7 +31,7 @@ d3.json("data/samples.json").then((data)=> {
     }; 
     //data 
  var chartdata = [trace1]; 
- 
+
 
 Plotly.newPlot("bar", chartdata)
 
@@ -70,4 +68,4 @@ Object.entries(filtereddata[0]).forEach(([key,values])=> {
 
 })
 
-}; 
+};
